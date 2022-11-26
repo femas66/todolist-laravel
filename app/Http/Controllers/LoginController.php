@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,7 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ];
         if(Auth::attempt($validated)) {
-            return 'Berhasil';
+            return redirect()->route('home');
         }
         else {
             return 'Gagal';
