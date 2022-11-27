@@ -3,7 +3,7 @@
     <div class="container">
         <h1>To-do-list</h1>
         <hr>
-        <form action="" method="post">
+        <form action="{{ route('actiontambah') }}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="newtask" class="form-label">Add new task : </label>
@@ -13,11 +13,11 @@
             </div>            
         </form>
         <ul class="list-group list-group-numbered">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
+            @foreach ($todolist as $todo)
+                <li class="list-group-item">{{ $todo->task }}|{{ $todo->user }}</li>
+            @endforeach
         </ul>
+        <hr>
+        {{ $todolist->links() }}
     </div>
 @endsection
