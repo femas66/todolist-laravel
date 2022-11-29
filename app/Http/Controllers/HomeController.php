@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function home() {
         if (Auth::check()) {
-            $todolist = Todolist::paginate(3);
+            $todolist = Todolist::paginate(5);
             return view('home', compact('todolist'));
         }
         else {
@@ -25,5 +25,11 @@ class HomeController extends Controller
         ];
         Todolist::create($data);
         return redirect()->route('home');
+    }
+
+    public function actionhapus(Request $request, $id) {
+        Todolist::find($id)->delete();
+        return redirect()->route('home');
+
     }
 }

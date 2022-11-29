@@ -12,12 +12,12 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>            
         </form>
-        <ul class="list-group list-group-numbered">
+        <ul class="list-group list-group">
             @foreach ($todolist as $todo)
-                <li class="list-group-item">{{ $todo->task }}|{{ $todo->user }}</li>
+                <li class="list-group-item">{{ $todo->task }} <a href="hapus/{{ $todo->id }}" style="float: right;">Hapus</a></li>
             @endforeach
         </ul>
         <hr>
-        {{ $todolist->links() }}
+        {{$todolist->links()}}
     </div>
 @endsection
